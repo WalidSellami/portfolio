@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="/portfolio/">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="A new Flutter project.">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="portfolio">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="icons/Icon-192.png"/>
+
+  <title>portfolio</title>
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Reconnect for fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+
+  <style>
+    /* Splash screen styling with gradient */
+    #loading {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: linear-gradient(135deg, #141d24, #2f5263);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.4s ease;
+      will-change: opacity;
+      overflow: hidden;
+    }
+
+    /* Glow pulse animation layer */
+    #loading::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.05), transparent 70%);
+      animation: pulse 4s infinite ease-in-out;
+      z-index: 1;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+    }
+
+    /* Loading text styling */
+    .loading-text {
+      position: relative;
+      font-size: 38px;
+      font-weight: 600;
+      font-family: "Varela Round", sans-serif;
+      color: #ffffff;
+      animation: fadeIn 0.3s ease-in forwards;
+      z-index: 2;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* Typing effect for dots */
+    .loading-text::after {
+      content: '';
+      display: inline-block;
+      width: 1ch;
+      animation: typing 1s steps(3, end) infinite;
+    }
+
+    @keyframes typing {
+      0% { content: ''; }
+      33% { content: '.'; }
+      66% { content: '..'; }
+      100% { content: '...'; }
+    }
+  </style>
+
+  <script async src="https://betterlytics.io/analytics.js"
+          data-site-id="walidsellami-mhj14m8w"
+          data-server-url="https://betterlytics.io/track"></script>
+
+  <script>
+    // The value below is injected by flutter build, do not touch.
+    const serviceWorkerVersion = "2263367232";
+  </script>
+  <!-- This script adds the flutter initialization JS code -->
+  <script src="flutter.js" defer></script>
+</head>
+<body>
+<div id="loading">
+  <div class="loading-text">Loading</div>
+</div>
+
+<script>
+  window.addEventListener('flutter-first-frame', function () {
+    const loadingScreen = document.getElementById('loading');
+    loadingScreen.style.opacity = '0'; // Fade out
+
+    setTimeout(() => {
+      loadingScreen.style.display = 'none';
+    }, 500);
+  });
+</script>
+<script src="flutter_bootstrap.js" async></script>
+</body>
+</html>
